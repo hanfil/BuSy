@@ -15,14 +15,14 @@ function mysql_conn($dbname){
 
 //Query the database for information
 function mysql_ask($query, $task){
-    //Different task are: 'resultnumber', 'fetch'
-    
-    $run = $mysqli->query($query);
+    //Different task are: 'resultnumber', 'fetch', 'create'
 
     if($task == 'resultnumber'){
+        $run = $mysqli->query($query);
         return $run->num_rows;
     }
     elseif($task == 'fetch'){
+        $run = $mysqli->query($query);
         return $run->fetch_array(MYSQLI_BOTH);
         /*Example to use the return:
         $string1 $run['name']
@@ -30,6 +30,11 @@ function mysql_ask($query, $task){
             <td>string</td>
         }
         */
+    }
+    elseif($task == 'create'){
+        if($mysqli->query($query) === TRUE)
+            return "New record created successfully.";
+        else return "Error: ".$query."<br>".$mysqli->error;
     }
 }
 
