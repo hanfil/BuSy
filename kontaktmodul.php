@@ -1,59 +1,50 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>kontaktmodul</title>
-    <?php include 'bootstrap.php'; ?>
-    <style>
-      table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-      }
+<?php include 'modul/head.php' ?>
 
-      td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-      }
+<body>
 
-      tr:nth-child(even) {
-          background-color: #dddddd;
-      }
-      </style>
-  </head>
-  <body>
-    <?php include 'navbar.php' ?>
-    <div class="container-fluid">
+    <div id="wrapper">
 
-      <div class="container">
-        <div class="form-group col-xs-6">
-        <form action="kontaktmodul_search.php" method="GET">
-          <center>
-            <h1>Search</h1>
-            <input type="text" size="90" name="search" class="form-control input-sm chat-input">
-            <input type="radio" name="type" value="Privatpersoner" class="radio-inline">Privatpersoner
-            <input type="radio" name="type" value="Bedrifter" class="radio-inline">Bedrifter
-            <br>
-            <br>
-            <input type="submit" name="submit" value="search" class="btn btn-primary">
-          </center>
-        </form>
+        <!-- Navigation -->
+        <?php include 'modul/navigation.php' ?>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Kontaktmodul
+                            <small>Liste over kontakter</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Kontaktmodul
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
         </div>
-
-        <div class="form-group col-xs-6">
-          <form action="kontaktmodul_insert.php" method="POST">
-            <center>
-              <h1>Insert</h1>
-              <input type="radio" name="insert" value="insert_privatperson" class="radio-inline">Privatperson
-              <input type="radio" name="insert" value="insert_bedrift" class="radio-inline">Bedrift
-              <br>
-              <input type="submit" name="submit" value="insert" class="btn btn-primary">
-            </center>
-          </form>
-        </div>
-      </div>
+        <!-- /#page-wrapper -->
 
     </div>
-  </body>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
 </html>
