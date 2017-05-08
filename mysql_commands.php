@@ -78,4 +78,36 @@ function addBusiness($name,$email,$tlf,$adress){
     return "true";
 }
 
+function inputPrivatperson($keyword){
+    $query = "SELECT firstname,lastname,email,tlf,adress,business FROM privatperson";
+    if ($keyword != '')
+        $query .= " WHERE firstname LIKE '%$keyword%' OR lastname LIKE '%$keyword%' OR tlf LIKE '$keyword' OR business LIKE '%$keyword%'";
+
+    $c = mysql_ask('resultnumber',$query);
+    for ($i = 0; $i < $c; $i++){
+        echo "<tr>";
+        $row = mysql_ask('fetch',$query);
+        for ($j = 0; $j < count($row)/2; $j++){
+            echo "<td>$row[$j]</td>";
+        }
+        echo "</tr>";
+    }
+}
+
+function inputBusiness($keyword){
+    $query = "SELECT * FROM business";
+    if ($keyword != '')
+        $query .= " WHERE name LIKE '%$keyword%' OR tlf LIKE '$keyword'";
+
+    $c = mysql_ask('resultnumber',$query);
+    for ($i = 0; $i < $c; $i++){
+        echo "<tr>";
+        $row = mysql_ask('fetch',$query);
+        for ($j = 1; $j < count($row)/2; $j++){
+            echo "<td>$row[$j]</td>";
+        }
+        echo "<td><button type='button' class='btn btn-info' data-toggle='modal' href='#editbedrift'>$row[0]</button><td>";
+        echo "</tr>";
+    }
+}
 ?>
