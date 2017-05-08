@@ -36,12 +36,12 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php //mysqli_ask('kontaktmodul','resultnumber');?></div>
+                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM business');?></div>
                                         <div>Kontakter</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="kontaktmodul.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
