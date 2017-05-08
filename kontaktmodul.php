@@ -30,6 +30,20 @@
                 </div>
                 <!-- /.row -->
 
+                <div class="row text-center">
+                    <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" href="#leggtilprivatperson">Legg til privatperson.</button>
+                    <button type="button" class="btn btn-lg btn-primary">Legg til bedrift.</button>
+                </div><br>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="form-group input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                    </div>
+                </div>
+                <!-- /.row -->
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h2>Striped Rows</h2>
@@ -107,6 +121,75 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+
+        <!-- Portfolio Modals -->
+    <div class="modal fade" id="leggtilprivatperson" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form method="GET" action="">
+                            <div class="modal-body">
+                                <h2>Legg til Privatperson</h2>
+                                <hr class="star-primary">
+                                <img src="img/tjenester/nettside_background.jpeg" class="img-responsive img-centered" alt="">
+                                <div class="form-group">
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Fornavn" id="fornavn"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Etternavn" id="etternavn"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Epost" id="epost"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Telefon" id="telefon"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Adresse" id="adresse"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Firma" id="firma"></div>
+                                    <br><br>
+                                </div>
+                                <button type="button input" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-globe"> Legg til</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="leggtilbedrift" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form method="GET" action="">
+                            <div class="modal-body">
+                                <h2>Legg til Privatperson</h2>
+                                <hr class="star-primary">
+                                <img src="img/tjenester/nettside_background.jpeg" class="img-responsive img-centered" alt="">
+                                <div class="form-group">
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Fornavn" id="fornavn"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Etternavn" id="etternavn"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Epost" id="epost"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Telefon" id="telefon"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Adresse" id="adresse"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Firma" id="firma"></div>
+                                    <br><br>
+                                </div>
+                                <button type="button input" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-globe"> Legg til</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

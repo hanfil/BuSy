@@ -6,15 +6,11 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
 //Connect to database
-function mysql_conn($force){
+function mysql_conn(){
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
     if ($mysqli->connect_errno) {
         printf("Connect failed: %s\n", $mysqli->connect_error);
         exit();
-        if($force == 'yes'){
-            $query="CREATE DATABASE".DB_NAME;
-            mysql_ask('update', $query);
-        }
     }
 }
 
