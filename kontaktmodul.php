@@ -119,13 +119,11 @@
                         <form method="POST" action="">
                             <div class="modal-body">
                                 <h2>Legg til Bedrift</h2>
-                                <hr class="star-primary">
-                                <img src="img/tjenester/nettside_background.jpeg" class="img-responsive img-centered" alt="">
                                 <div class="form-group">
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Navn" name="name"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Epost" name="businessemail"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Telefon" name="businesstlf"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Adresse" name="businessadress"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Navn" name="name"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Epost" name="businessemail"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Telefon" name="businesstlf"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Adresse" name="businessadress"></div>
                                     <br><br>
                                 </div>
                                 <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-briefcase"> Legg til</span></button>
@@ -150,39 +148,6 @@
                         <form method="POST" action="">
                             <div class="modal-body">
                                 <h2>Legg til Privatperson</h2>
-                                <hr class="star-primary">
-                                <img src="img/tjenester/nettside_background.jpeg" class="img-responsive img-centered" alt="">
-                                <div class="form-group">
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Fornavn" name="firstname"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Etternavn" name="lastname"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Epost" name="privatemail"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Telefon" name="privattlf"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Adresse" name="privatadress"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Firma" name="business"></div>
-                                    <br><br>
-                                </div>
-                                <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-user"> Legg til</span></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="editbedrift" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <form method="POST" action="">
-                            <div class="modal-body">
-                                <h2>Endre Bedrift</h2>
                                 <div class="form-group">
                                     <div class="col-lg-2"><input class="form-control" placeholder="Fornavn" name="firstname"></div>
                                     <div class="col-lg-2"><input class="form-control" placeholder="Etternavn" name="lastname"></div>
@@ -203,12 +168,12 @@
 
     <!--Input into DB-->
     <?php 
-    if(isset($_POST['name'])){
+    if(isset($_POST['name']) and isset($_POST['id']))
+        updateBusiness($_POST['id'],$_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
+    elseif(isset($_POST['name']))
         addBusiness($_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
-    }
-    if(isset($_POST['firstname'])){
+    elseif(isset($_POST['firstname']))
         addPrivatperson($_POST['firstname'],$_POST['lastname'],$_POST['privatemail'],$_POST['privattlf'],$_POST['privatadress'],$_POST['business']);
-    }
     ?>
 
 </body>
