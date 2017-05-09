@@ -170,8 +170,8 @@
     <?php 
     if(isset($_POST['name']) and isset($_POST['businessid']))
         updateBusiness($_POST['businessid'],$_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
-    if(isset($_POST['firstname']) and isset($_POST['privatid']))
-        updatePrivatperson();
+    elseif(isset($_POST['firstname']) and isset($_POST['privatid']))
+        updatePrivatperson($_POST['privatid'],$_POST['firstname'],$_POST['lastname'],$_POST['privatemail'],$_POST['privattlf'],$_POST['privatadress'],$_POST['business']);
     elseif(isset($_POST['name']))
         addBusiness($_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
     elseif(isset($_POST['firstname']))

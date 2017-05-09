@@ -68,8 +68,16 @@ function addPrivatperson($firstname,$lastname,$email,$tlf,$adress,$business){
     }
 }
 
+function updatePrivatperson($id,$firstname,$lastname,$email,$tlf,$adress,$business){
+    $query = "UPDATE business SET firstname = '$firstname', lastname = '$lastname', email = '$email', tlf = '$tlf', adress = '$adress', business = '$business'
+                WHERE id = $id";
+    $reuslt = mysql_ask('update',$query);
+    if ($reuslt != "New record updated successfully."){
+    }
+}
+
 function inputPrivatperson($keyword){
-    $query = "SELECT firstname,lastname,email,tlf,adress,business FROM privatperson";
+    $query = "SELECT * FROM privatperson";
     if ($keyword != '')
         $query .= " WHERE firstname LIKE '%$keyword%' OR lastname LIKE '%$keyword%' OR tlf LIKE '$keyword' OR business LIKE '%$keyword%'";
 
@@ -79,8 +87,48 @@ function inputPrivatperson($keyword){
         for ($i=1; $i < count($row);$i++)
             echo "<td>$row[$i]</td>";
         echo "<td><button type='button' class='btn btn-info' data-toggle='modal' href='#editprivat$row[0]'>$row[0]</button></td>";
+        inputPrivatpersonModal($row[0]);
         echo "</tr>";
     }
+}
+
+function inputPrivatpersonModal($id){
+    $query = "SELECT * FROM privatperson WHERE id = $id";
+    $privat = mysql_ask('fetcharray',$query);
+    echo '
+    <div class="modal fade" id="editprivat'.$id.'" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form method="POST" action="">
+                            <div class="modal-body">
+                                <h2>Legg til Bedrift</h2>
+                                <div class="form-group">
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[1].'" name="firstname"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[2].'" name="lastname"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[3].'" name="privatemail"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[4].'" name="privattlf"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[5].'" name="privatadress"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[6].'" name="business"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[0].'" readonly name="privatid"></div>
+                                    <br><br>
+                                </div>
+                                <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-briefcase"> Oppdater</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
 }
 
 function addBusiness($name,$email,$tlf,$adress){
