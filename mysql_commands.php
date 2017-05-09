@@ -125,6 +125,7 @@ function inputBusiness($keyword){
         echo "</tr>";
     }
 }
+
 function inputBusinessModal($id){
     $query = "SELECT * FROM business WHERE id = $id";
     $business = mysql_ask('fetcharray',$query);

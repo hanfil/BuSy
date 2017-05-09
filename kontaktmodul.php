@@ -168,8 +168,10 @@
 
     <!--Input into DB-->
     <?php 
-    if(isset($_POST['name']) and isset($_POST['id']))
-        updateBusiness($_POST['id'],$_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
+    if(isset($_POST['name']) and isset($_POST['businessid']))
+        updateBusiness($_POST['businessid'],$_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
+    if(isset($_POST['firstname']) and isset($_POST['privatid']))
+        updatePrivatperson();
     elseif(isset($_POST['name']))
         addBusiness($_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
     elseif(isset($_POST['firstname']))
