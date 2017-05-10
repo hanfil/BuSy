@@ -120,10 +120,10 @@
                             <div class="modal-body">
                                 <h2>Legg til Bedrift</h2>
                                 <div class="form-group">
-                                    <div class="col-lg-3"><input class="form-control" placeholder="Navn" name="name"></div>
-                                    <div class="col-lg-3"><input class="form-control" placeholder="Epost" name="businessemail"></div>
-                                    <div class="col-lg-3"><input class="form-control" placeholder="Telefon" name="businesstlf"></div>
-                                    <div class="col-lg-3"><input class="form-control" placeholder="Adresse" name="businessadress"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Navn" type="text" name="name"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Epost" type="email" name="businessemail"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Telefon" type="number" name="businesstlf"></div>
+                                    <div class="col-lg-3"><input class="form-control" placeholder="Adresse" type="text" name="businessadress"></div>
                                     <br><br>
                                 </div>
                                 <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-briefcase"> Legg til</span></button>
@@ -149,14 +149,14 @@
                             <div class="modal-body">
                                 <h2>Legg til Privatperson</h2>
                                 <div class="form-group">
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Fornavn" name="firstname"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Etternavn" name="lastname"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Epost" name="privatemail"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Telefon" name="privattlf"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Adresse" name="privatadress"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Fornavn" type="text" name="firstname"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Etternavn" type="text" name="lastname"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Epost" type="email" name="privatemail"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Telefon" type="number" name="privattlf"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Adresse" type="text" name="privatadress"></div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <input list="business" class="form-control" placeholder="Firma" name="business">
+                                            <input list="business" class="form-control" placeholder="Firma" type="text" name="business">
                                             <datalist id="business"><?php
                                                 $querybusiness="SELECT name FROM business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));

@@ -96,14 +96,14 @@
                             <div class="modal-body">
                                 <h2>Legg til Produkt</h2>
                                 <div class="form-group row">
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Produktnavn" name="productname"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Innkjøpspris" name="innprice"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Utsalgspris" name="outprice"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Antall" name="quantity"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Kategori" name="category"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Produktnavn" type="text" name="productname"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Innkjøpspris" type="number" name="innprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Utsalgspris" type="number" name="outprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Antall" type="number" name="quantity"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Kategori" type="text" name="category"></div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <input list="supplier" class="form-control" placeholder="Leverandør" name="supplier">
+                                            <input list="supplier" class="form-control" placeholder="Leverandør" type="text" name="supplier">
                                             <datalist id="supplier"><?php
                                                 $querybusiness="SELECT name FROM business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
@@ -113,7 +113,7 @@
                                             ?></datalist> 
                                         </div>
                                     </div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Produktnummer" name="productnumber"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Produktnummer" type="number" name="productnumber"></div>
                                     <br><br>
                                 </div>
                                 <button type="button submit" class="btn btn-lg btn-success"><span class="fa fa-shopping-cart"> Legg til</span></button>

@@ -109,14 +109,14 @@ function inputPrivatpersonModal($id){
                             <div class="modal-body">
                                 <h2>Oppdater Privatperson</h2>
                                 <div class="form-group">
-                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[1].'" name="firstname"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[2].'" name="lastname"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[3].'" name="privatemail"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[4].'" name="privattlf"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[5].'" name="privatadress"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[1].'" type="text" name="firstname"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[2].'" type="text" name="lastname"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[3].'" type="email" name="privatemail"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[4].'" type="number" name="privattlf"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[5].'" type="text" name="privatadress"></div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <input list="business" class="form-control" value="'.$privat[6].'" name="business">
+                                            <input list="business" class="form-control" value="'.$privat[6].'" type="text" name="business">
                                             <datalist id="business">';
                                                 $querybusiness="SELECT name FROM business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
@@ -199,10 +199,10 @@ function inputBusinessModal($id){
                             <div class="modal-body">
                                 <h2>Opdater Bedrift</h2>
                                 <div class="form-group">
-                                    <div class="col-lg-3"><input class="form-control" value="'.$business[1].'" name="name"></div>
-                                    <div class="col-lg-3"><input class="form-control" value="'.$business[2].'" name="businessemail"></div>
-                                    <div class="col-lg-3"><input class="form-control" value="'.$business[3].'" name="businesstlf"></div>
-                                    <div class="col-lg-3"><input class="form-control" value="'.$business[4].'" name="businessadress"></div>
+                                    <div class="col-lg-3"><input class="form-control" value="'.$business[1].'" type="text" name="name"></div>
+                                    <div class="col-lg-3"><input class="form-control" value="'.$business[2].'" type="email" name="businessemail"></div>
+                                    <div class="col-lg-3"><input class="form-control" value="'.$business[3].'" type="number" name="businesstlf"></div>
+                                    <div class="col-lg-3"><input class="form-control" value="'.$business[4].'" type="text" name="businessadress"></div>
                                     <div class="col-lg-2"><input class="form-control" value="'.$business[0].'" readonly name="businessid"></div>
                                     <br><br>
                                 </div>
@@ -288,14 +288,14 @@ function inputProductModal($id){
                             <div class="modal-body">
                                 <h2>Oppdater Produkt</h2>
                                 <div class="form-group row">
-                                    <div class="col-lg-2"><input class="form-control" value="'.$product[1].'" name="productname"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$product[2].'" name="innprice"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$product[3].'" name="outprice"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$product[4].'" name="quantity"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$product[5].'" name="category"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[1].'" type="text" name="productname"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[2].'" type="number" name="innprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[3].'" type="number" name="outprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[4].'" type="number" name="quantity"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[5].'" type="text" name="category"></div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <input list="business" class="form-control" value="'.$product[6].'" name="supplier">
+                                            <input list="business" class="form-control" value="'.$product[6].'" type="text" name="supplier">
                                             <datalist id="business">';
                                                 $querysupplier="SELECT name FROM business";
                                                 $resultsupplier = (mysql_ask('fetchrow',$querysupplier));
