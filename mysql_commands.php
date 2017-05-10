@@ -69,11 +69,9 @@ function addPrivatperson($firstname,$lastname,$email,$tlf,$adress,$business){
 }
 
 function updatePrivatperson($id,$firstname,$lastname,$email,$tlf,$adress,$business){
-    $query = "UPDATE business SET firstname = '$firstname', lastname = '$lastname', email = '$email', tlf = '$tlf', adress = '$adress', business = '$business'
+    $query = "UPDATE privatperson SET firstname = '$firstname', lastname = '$lastname', email = '$email', tlf = '$tlf', adress = '$adress', business = '$business'
                 WHERE id = $id";
     $reuslt = mysql_ask('update',$query);
-    if ($reuslt != "New record updated successfully."){
-    }
 }
 
 function inputPrivatperson($keyword){
@@ -116,7 +114,21 @@ function inputPrivatpersonModal($id){
                                     <div class="col-lg-2"><input class="form-control" value="'.$privat[3].'" name="privatemail"></div>
                                     <div class="col-lg-2"><input class="form-control" value="'.$privat[4].'" name="privattlf"></div>
                                     <div class="col-lg-2"><input class="form-control" value="'.$privat[5].'" name="privatadress"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="'.$privat[6].'" name="business"></div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <input list="business" class="form-control" value="'.$privat[6].'" name="business">
+                                            <datalist id="business">';
+                                                $querybusiness="SELECT name FROM business";
+                                                $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
+                                                for ($i = 0; $i < count($resultbusiness)/2; $i++){
+                                                    file_put_contents('log1',$resultbusiness[$i], FILE_APPEND);
+                                                }
+                                                foreach($resultbusiness as $names){
+                                                    foreach($names as $name)
+                                                    echo "<option value='$name'>";file_put_contents('log2',$name, FILE_APPEND);}
+                                            echo '</datalist> 
+                                        </div>
+                                    </div>
                                     <div class="col-lg-2"><input class="form-control" value="'.$privat[0].'" readonly name="privatid"></div>
                                     <br><br>
                                 </div>
@@ -153,8 +165,6 @@ function updateBusiness($id,$name,$email,$tlf,$adress){
     $query = "UPDATE business SET name = '$name', email = '$email', tlf = '$tlf', adress = '$adress'
                 WHERE id = $id";
     $reuslt = mysql_ask('update',$query);
-    if ($reuslt != "New record updated successfully."){
-    }
 }
 
 
