@@ -11,7 +11,7 @@
 
     <title>BuSy Prosjekt</title>
 
-    <?php include 'mysql_commands.php' ?>
+    <?php include 'modul/mysql_commands.php' ?>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

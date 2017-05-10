@@ -85,6 +85,17 @@
                         <a href="ordremodul.php"><i class="fa fa-fw fa-shopping-cart"></i> Ordremodul</a>
                     </li>
                     <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#ekstra"><i class="fa fa-fw fa-arrows-v"></i> Ekstra <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="ekstra" class="collapse">
+                            <li>
+                                <a href="#"><i class="fa fa-clock-o"></i> Aktivitet</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class=" fa fa-money"></i> Transaksjoner</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
@@ -98,17 +109,6 @@
                     </li>
                     <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>
