@@ -154,10 +154,9 @@
                                     <div class="col-lg-2"><input class="form-control" placeholder="Epost" name="privatemail"></div>
                                     <div class="col-lg-2"><input class="form-control" placeholder="Telefon" name="privattlf"></div>
                                     <div class="col-lg-2"><input class="form-control" placeholder="Adresse" name="privatadress"></div>
-                                    <div class="col-lg-2"><input class="form-control" placeholder="Firma" name="business"></div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <input list="business" class="form-control" value="'.$privat[6].'" name="business">
+                                            <input list="business" class="form-control" placeholder="Firma" name="business">
                                             <datalist id="business"><?php
                                                 $querybusiness="SELECT name FROM business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
