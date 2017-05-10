@@ -15,15 +15,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Produktmodul
-                            <small>Liste over produkter</small>
+                            Blank Page
+                            <small>Subheading</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Produktmodul
+                                <i class="fa fa-file"></i> Blank Page
                             </li>
                         </ol>
                     </div>
