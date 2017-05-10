@@ -79,6 +79,9 @@
                         <a href="kontaktmodul.php"><i class="fa fa-fw fa-table"></i> Kontakmodul</a>
                     </li>
                     <li>
+                        <a href="produktmodul.php"><i class="fa fa-fw fa-tasks"></i> Produktmodul</a>
+                    </li>
+                    <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
@@ -103,9 +106,6 @@
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>
                 </ul>
             </div>
