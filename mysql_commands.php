@@ -107,7 +107,7 @@ function inputPrivatpersonModal($id){
                     <div class="col-lg-8 col-lg-offset-2">
                         <form method="POST" action="">
                             <div class="modal-body">
-                                <h2>Legg til Bedrift</h2>
+                                <h2>Oppdater Privatperson</h2>
                                 <div class="form-group">
                                     <div class="col-lg-2"><input class="form-control" value="'.$privat[1].'" name="firstname"></div>
                                     <div class="col-lg-2"><input class="form-control" value="'.$privat[2].'" name="lastname"></div>
@@ -122,7 +122,7 @@ function inputPrivatpersonModal($id){
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
                                                 foreach($resultbusiness as $names){
                                                     foreach($names as $name)
-                                                    echo "<option value='$name'>";file_put_contents('log2',$name, FILE_APPEND);}
+                                                    echo "<option value='$name'>";}
                                             echo '</datalist> 
                                         </div>
                                     </div>
@@ -198,7 +198,7 @@ function inputBusinessModal($id){
                     <div class="col-lg-8 col-lg-offset-2">
                         <form method="POST" action="">
                             <div class="modal-body">
-                                <h2>Legg til Bedrift</h2>
+                                <h2>Opdater Bedrift</h2>
                                 <div class="form-group">
                                     <div class="col-lg-3"><input class="form-control" value="'.$business[1].'" name="name"></div>
                                     <div class="col-lg-3"><input class="form-control" value="'.$business[2].'" name="businessemail"></div>

@@ -155,6 +155,18 @@
                                     <div class="col-lg-2"><input class="form-control" placeholder="Telefon" name="privattlf"></div>
                                     <div class="col-lg-2"><input class="form-control" placeholder="Adresse" name="privatadress"></div>
                                     <div class="col-lg-2"><input class="form-control" placeholder="Firma" name="business"></div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <input list="business" class="form-control" value="'.$privat[6].'" name="business">
+                                            <datalist id="business"><?php
+                                                $querybusiness="SELECT name FROM business";
+                                                $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
+                                                foreach($resultbusiness as $names){
+                                                    foreach($names as $name)
+                                                    echo "<option value='$name'>";}
+                                            ?></datalist> 
+                                        </div>
+                                    </div>
                                     <br><br>
                                 </div>
                                 <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-user"> Legg til</span></button>
