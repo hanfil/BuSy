@@ -237,4 +237,86 @@ function addProduct($productname,$innprice,$outprice,$quantity,$category,$suppli
         mysql_ask('update',$query);
     }
 }
+
+function updateProduct($id,$productname,$innprice,$outprice,$quantity,$category,$supplier,$productnumber){
+    $query = "UPDATE product SET productname = '$productname', innprice = '$innprice', outprice = '$outprice', quantity = '$quantity', 
+                                    category = '$category', supplier = '$supplier', productnumber ='$productnumber'
+                WHERE id = $id";
+    $reuslt = mysql_ask('update',$query);
+}
+
+function inputProduct($keyword){
+    $query = "SELECT * FROM product";
+    if ($keyword != '')
+        $query .= " WHERE productname LIKE '%$keyword%' OR category LIKE '%$keyword%' OR supplier LIKE '%$keyword%'";
+
+    $result = mysql_ask('fetchrow',$query);
+    foreach($result as $row){
+        echo "<tr>";
+        for ($i=1; $i < count($row);$i++){
+            if ($row[4] < 1)
+                echo "<td class='danger'>$row[$i]</td>";
+            elseif ($row[4] < 10)
+                echo "<td class='warning'>$row[$i]</td>";
+            elseif ($row[4] > 20)
+                echo "<td class='success'>$row[$i]</td>";
+            else
+                echo "<td class='active'>$row[$i]</td>";
+        }
+        echo "<td><button type='button' class='btn btn-info' data-toggle='modal' href='#editproduct$row[0]'>$row[0]</button></td>";
+        inputProductModal($row[0]);
+        echo "</tr>";
+    }
+}
+
+function inputProductModal($id){
+    $query = "SELECT * FROM product WHERE id = $id";
+    $product = mysql_ask('fetcharray',$query);
+    echo '
+    <div class="modal fade" id="editproduct'.$id.'" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" action="">
+                            <div class="modal-body">
+                                <h2>Oppdater Produkt</h2>
+                                <div class="form-group row">
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[1].'" name="productname"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[2].'" name="innprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[3].'" name="outprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[4].'" name="quantity"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[5].'" name="category"></div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <input list="business" class="form-control" value="'.$product[6].'" name="supplier">
+                                            <datalist id="business">';
+                                                $querysupplier="SELECT name FROM business";
+                                                $resultsupplier = (mysql_ask('fetchrow',$querysupplier));
+                                                foreach($resultsupplier as $names){
+                                                    foreach($names as $name)
+                                                    echo "<option value='$name'>";}
+                                            echo '</datalist> 
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2"><input class="form-control" value="'.$product[7].'" readonly name="productnumber"></div>
+                                    <div class="col-lg-2"><input class="form-control" value="id = '.$product[0].'" readonly name="productid"></div>
+                                    <br><br>
+                                </div>
+                                <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-briefcase"> Oppdater</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
+}
 ?>
