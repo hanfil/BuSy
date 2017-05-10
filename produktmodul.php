@@ -123,48 +123,56 @@
 
     <!-- Portfolio Modals -->
     <div class="modal fade" id="leggtilprodukt" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <form method="POST" action="">
-                        <div class="modal-body">
-                            <h2>Legg til Produkt</h2>
-                            <div class="form-group row">
-                                <div class="col-lg-2"><input class="form-control" placeholder="Produktnavn" name="productname"></div>
-                                <div class="col-lg-2"><input class="form-control" placeholder="Innkjøpspris" name="innprice"></div>
-                                <div class="col-lg-2"><input class="form-control" placeholder="Utsalgspris" name="outprice"></div>
-                                <div class="col-lg-2"><input class="form-control" placeholder="Antall" name="quantity"></div>
-                                <div class="col-lg-2"><input class="form-control" placeholder="Kategori" name="category"></div>
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <input list="supplier" class="form-control" placeholder="Leverandør" name="supplier">
-                                        <datalist id="supplier"><?php
-                                            $querybusiness="SELECT name FROM business";
-                                            $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
-                                            foreach($resultbusiness as $names){
-                                                foreach($names as $name)
-                                                echo "<option value='$name'>";}
-                                        ?></datalist> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" action="">
+                            <div class="modal-body">
+                                <h2>Legg til Produkt</h2>
+                                <div class="form-group row">
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Produktnavn" name="productname"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Innkjøpspris" name="innprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Utsalgspris" name="outprice"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Antall" name="quantity"></div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Kategori" name="category"></div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <input list="supplier" class="form-control" placeholder="Leverandør" name="supplier">
+                                            <datalist id="supplier"><?php
+                                                $querybusiness="SELECT name FROM business";
+                                                $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
+                                                foreach($resultbusiness as $names){
+                                                    foreach($names as $name)
+                                                    echo "<option value='$name'>";}
+                                            ?></datalist> 
+                                        </div>
                                     </div>
+                                    <div class="col-lg-2"><input class="form-control" placeholder="Produktnummer" name="productnumber"></div>
+                                    <br><br>
                                 </div>
-                                <div class="col-lg-2"><input class="form-control" placeholder="Produktnummer" name="productnumber"></div>
-                                <br><br>
+                                <button type="button submit" class="btn btn-lg btn-success"><span class="fa fa-shopping-cart"> Legg til</span></button>
                             </div>
-                            <button type="button submit" class="btn btn-lg btn-success"><span class="fa fa-shopping-cart"> Legg til</span></button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!--Input into DB-->
+    <?php 
+    if(isset($_POST['productname']) and isset($_POST['productid']))
+        updateProduct($_POST['productid'],$_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
+    elseif(isset($_POST['productname']))
+        addProduct($_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
+    ?>
 
 </body>
 

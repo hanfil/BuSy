@@ -51,8 +51,8 @@ function mysql_ask($task, $query){
 function addPrivatperson($firstname,$lastname,$email,$tlf,$adress,$business){
     $query = "INSERT INTO privatperson (firstname, lastname, email, tlf, adress, business)
                 VALUES ('$firstname','$lastname','$email','$tlf','$adress','$business');";
-    $reuslt = mysql_ask('update',$query);
-    if ($reuslt != "New record updated successfully."){
+    $result = mysql_ask('update',$query);
+    if ($result != "New record updated successfully."){
         $force = "CREATE TABLE privatperson (
                 id int NOT NULL AUTO_INCREMENT,
                 firstname varchar(255),
@@ -143,8 +143,8 @@ function inputPrivatpersonModal($id){
 function addBusiness($name,$email,$tlf,$adress){
     $query = "INSERT INTO business (name, email, tlf, adress)
                 VALUES ('$name','$email','$tlf','$adress');";
-    $reuslt = mysql_ask('update',$query);
-    if ($reuslt != "New record updated successfully."){
+    $result = mysql_ask('update',$query);
+    if ($result != "New record updated successfully."){
         $force = "CREATE TABLE business (
                 id int NOT NULL AUTO_INCREMENT,
                 name varchar(255),
@@ -163,7 +163,6 @@ function updateBusiness($id,$name,$email,$tlf,$adress){
                 WHERE id = $id";
     $reuslt = mysql_ask('update',$query);
 }
-
 
 function inputBusiness($keyword){
     $query = "SELECT * FROM business";
@@ -216,5 +215,26 @@ function inputBusinessModal($id){
         </div>
     </div>
     ';
+}
+
+function addProduct($productname,$innprice,$outprice,$quantity,$category,$supplier,$productnumber){
+    $query = "INSERT INTO product (productname, innprice, outprice, quantity, category, supplier, productnumber)
+                VALUES ('$productname','$innprice','$outprice','$quantity','$category','$supplier','$productnumber');";
+    $result = mysql_ask('update',$query);
+    if ($result != "New record updated successfully."){
+        $force = "CREATE TABLE product (
+                id int NOT NULL AUTO_INCREMENT,
+                productname varchar(255),
+                innprice int(64),
+                outprice int(64),
+                quantity int(64),
+                category varchar(255),
+                supplier varchar(255),
+                productnumber int(64) NOT NULL,
+                PRIMARY KEY (id)
+                );";
+        mysql_ask('update',$force);
+        mysql_ask('update',$query);
+    }
 }
 ?>
