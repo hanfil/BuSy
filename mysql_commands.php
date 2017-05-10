@@ -120,9 +120,6 @@ function inputPrivatpersonModal($id){
                                             <datalist id="business">';
                                                 $querybusiness="SELECT name FROM business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
-                                                for ($i = 0; $i < count($resultbusiness)/2; $i++){
-                                                    file_put_contents('log1',$resultbusiness[$i], FILE_APPEND);
-                                                }
                                                 foreach($resultbusiness as $names){
                                                     foreach($names as $name)
                                                     echo "<option value='$name'>";file_put_contents('log2',$name, FILE_APPEND);}
