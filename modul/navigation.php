@@ -82,6 +82,9 @@
                         <a href="produktmodul.php"><i class="fa fa-fw fa-tasks"></i> Produktmodul</a>
                     </li>
                     <li>
+                        <a href="ordremodul.php"><i class="fa fa-fw fa-shopping-cart"></i> Ordremodul</a>
+                    </li>
+                    <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
