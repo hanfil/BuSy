@@ -37,7 +37,8 @@
                             <span class="input-group-btn"><button class="btn btn-default" type="button submit"><i class="fa fa-search"></i></button></span>
                         </div>
                     </form>
-                    <button type="button" class="btn btn-lg btn-primary col-lg-4" data-toggle="modal" href="#leggtilprodukt">Legg til produkt.</button>
+                    <button type="button" class="btn btn-primary col-lg-3" data-toggle="modal" href="#leggtilprodukt">Legg til produkt.</button>
+                    <button type="button" class="btn btn-info col-lg-1" data-toggle="modal" href="#lagtilbud">Lag Tilbud</button>
                 </div>
                 <!-- /.row -->
 
@@ -52,8 +53,8 @@
                                         <th>Utsalgspris</th>
                                         <th>Antall</th>
                                         <th>Kategori</th>                                        
-                                        <th>Produktnummer</th>
                                         <th>Leverandør</th>
+                                        <th>Produktnummer</th>
                                     </tr>
                                 </thead>
                                 <tbody>
