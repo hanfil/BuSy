@@ -264,9 +264,13 @@ function inputProduct($keyword){
                 echo "<td class='active'>$row[$i]</td>";
         }
         echo "<td><button type='button' class='btn btn-info' data-toggle='modal' href='#editproduct$row[0]'>$row[0]</button></td>";
-        inputProductModal($row[0]);
+        echo "<td><input class='form-control' type='checkbox' name='lagtilbud$row[0]' value='$row[0]'></td>";
+        //inputProductModal($row[0]);
         echo "</tr>";
     }
+    echo "</form>";
+    foreach ($result as $row){
+        inputProductModal($row[0]);}
 }
 
 function inputProductModal($id){
@@ -306,10 +310,8 @@ function inputProductModal($id){
                                         </div>
                                     </div>
                                     <div class="col-lg-2"><input class="form-control" value="'.$product[7].'" readonly name="productnumber"></div>
-                                    <div class="col-lg-2"><input class="form-control" value="id = '.$product[0].'" readonly name="productid"></div>
-                                    <br><br>
                                 </div>
-                                <button type="button submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-briefcase"> Oppdater</span></button>
+                                <button type="button submit" class="btn btn-lg btn-success" name="oppdater" value="'.$product[0].'"><span class="glyphicon glyphicon-briefcase"> Oppdater</span></button>
                             </div>
                         </form>
                     </div>
@@ -318,5 +320,35 @@ function inputProductModal($id){
         </div>
     </div>
     ';
+}
+function lagtilbudclass(){
+    if (isset($_GET['tilbud']))
+        echo "col-lg-9";
+}
+
+function lagtilbud(){
+    if (isset($_GET['tilbud'])){
+    echo '
+                    <div class="col-lg-3">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Produktnavn</th>
+                                        <th>Innkjøpspris</th>
+                                        <th>Utsalgspris</th>
+                                        <th>Antall</th>
+                                        <th>Kategori</th>                                        
+                                        <th>Leverandør</th>
+                                        <th>Produktnummer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>';
+    }
 }
 ?>

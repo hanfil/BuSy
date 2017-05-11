@@ -85,6 +85,9 @@
                         <a href="ordremodul.php"><i class="fa fa-fw fa-shopping-cart"></i> Ordremodul</a>
                     </li>
                     <li>
+                        <a href="#"><i class=" fa fa-money"></i> Faktura</a>
+                    </li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#ekstra"><i class="fa fa-fw fa-arrows-v"></i> Ekstra <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="ekstra" class="collapse">
                             <li>

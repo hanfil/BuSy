@@ -38,12 +38,12 @@
                         </div>
                     </form>
                     <button type="button" class="btn btn-primary col-lg-3" data-toggle="modal" href="#leggtilprodukt">Legg til produkt.</button>
-                    <button type="button" class="btn btn-info col-lg-1" data-toggle="modal" href="#lagtilbud">Lag Tilbud</button>
+                    <form method='GET'><button type="button submit" name="tilbud" class="btn btn-info col-lg-1">Lag Tilbud</button>
                 </div>
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="<?php lagtilbudclass(); ?>">
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
@@ -63,6 +63,9 @@
                             </table>
                         </div>
                     </div>
+
+                    <?php lagtilbud(); ?>
+
                 </div>
                 <!-- /.row -->
 
@@ -128,8 +131,8 @@
 
     <!--Input into DB-->
     <?php 
-    if(isset($_POST['productname']) and isset($_POST['productid']))
-        updateProduct($_POST['productid'],$_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
+    if(isset($_POST['oppdater']) and $_POST['oppdater'] > 0)
+        updateProduct($_POST['oppdater'],$_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
     elseif(isset($_POST['productname']))
         addProduct($_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
     ?>
