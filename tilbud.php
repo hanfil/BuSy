@@ -30,6 +30,10 @@
                 </div>
                 <!-- /.row -->
 
+                <div class="row">
+                    <?php inputOffer(); ?>
+                </div>
+
             </div>
             <!-- /.container-fluid -->
 
@@ -44,6 +48,13 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <?php 
+    if (isset($_POST['buyoffer']))
+        buyOffer($_POST['buyoffer']);
+    elseif (isset($_POST['removeoffer']))
+        removeOffer($_POST['removeoffer']);
+    ?>
 
 </body>
 

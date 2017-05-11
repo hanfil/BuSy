@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <?php makeoffer_db(); 
-                    if (isset($_POST['tilbud']) or isset($_POST['updateoffer']))
+                    if (isset($_POST['tilbud']))
                         makeoffer();?>
                 </div>
                 <!-- /.row -->
@@ -136,7 +136,11 @@
         updateProduct($_POST['oppdater'],$_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
     elseif(isset($_POST['productname']))
         addProduct($_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
-    if(isset($_POST["clearoffer"])) 
+    if(isset($_POST['updateoffer']))
+        makeoffer_update();
+    elseif(isset($_POST['makeoffer']))
+        makeoffer_make();
+    elseif(isset($_POST["clearoffer"])) 
         makeoffer_clear();
     ?>
 

@@ -320,8 +320,9 @@ function inputProductModal($id){
     </div>
     ';
 }
+
 function makeoffer_class(){
-    if (isset($_POST['tilbud']) or isset($_POST['updateoffer']))
+    if (isset($_POST['tilbud']))
         echo "col-lg-9";
 }
 
@@ -359,11 +360,18 @@ function makeoffer_update(){
     $query = "SELECT * FROM makeoffer";
     $result = mysql_ask('fetchrow',$query);
     foreach($result as $row){
-        $namecheck = "quantity".$row[2];
+        $namecheck = "quantity".$row[0];
         if ($row[2] != $_POST[$namecheck]){
-            
+            $query = "UPDATE makeoffer SET quantity = '$_POST[$namecheck]' WHERE id = $row[0]";
+            mysql_ask('update',$query);
         }
     }
+}
+
+function makeoffer_make(){
+    makeoffer_update();
+    offercreate($_POST['offerprice'],$_POST['enddate']);
+    makeoffer_clear();
 }
 
 function makeoffer(){
@@ -373,6 +381,7 @@ function makeoffer(){
     echo '
                     <div class="col-lg-3">
                         <form method="POST">
+                            <div class="row"><input type="text" class="form-control" placeholder="Navn" name="offername" pattern=".{3,}" required title="3 characters minimum"></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
@@ -383,11 +392,13 @@ function makeoffer(){
                                     </thead>
                                     <tbody>';
                                     foreach($result as $row){
+                                        $query = "SELECT quantity FROM product WHERE productname = '$row[1]'";
+                                        $max = mysql_ask('fetcharray',$query);
                                         echo "<tr>";
                                         echo "<td><input class='form-control' type='text' value='$row[1]' readonly></td>";
-                                        echo "<td><input class='form-control' type='number' value='$row[2]' min='1' name='quantity$row[0]'></td>";
+                                        echo "<td><input class='form-control' type='number' value='$row[2]' min='0' max='$max[0]' name='quantity$row[0]'></td>";
                                         echo "</tr>";
-                                        $sum += $row[3];
+                                        $sum += $row[3]*$row[2];
                                         } 
     echo '
                                     </tbody>
@@ -399,12 +410,118 @@ function makeoffer(){
                             </div>
                             <div class="row">
                                 <div class="col-lg-5 text-center"><h5>Slutt Dato</h5></div>
-                                <div class="col-lg-7"><input class="form-control" type="date" name="endDate" min="'.date("Y-m-d").'"></div>
+                                <div class="col-lg-7"><input class="form-control" type="date" name="enddate" min="'.date("Y-m-d").'"></div>
                             </div>
-                            <div class="col-lg-4"><button type="button" class="btn btn-warning">Levér Tilbud</div>
+                            <div class="col-lg-4"><button type="button submit" class="btn btn-warning" name="makeoffer">Levér Tilbud</div>
                             <div class="col-lg-4"><button type="button submit" class="btn btn-success" name="updateoffer">Oppdater</div>
                             <div class="col-lg-4"><button type="button submit" class="btn btn-danger" name="clearoffer">Slett Alt</div>
                         </form>
                     </div>';
+}
+
+function offercreate($offerprice,$enddate){
+    $querymakeoffer = "SELECT productname, quantity FROM makeoffer";
+    $resultmakeoffer = mysql_ask('fetchrow',$querymakeoffer);
+    $valueinsert="";
+    foreach($resultmakeoffer as $makeoffer)
+        $valueinsert .= "-$makeoffer[0]>$makeoffer[1]";
+    $valueinsert .= "|$offerprice|$enddate";
+    $query = "INSERT INTO offer (name,offers) VALUES ('".$_POST['offername']."','$valueinsert')";
+    $result = mysql_ask('update',$query);
+    if ($result != "New record updated successfully."){
+            $force = "CREATE TABLE offer (
+                    id int NOT NULL AUTO_INCREMENT,
+                    name varchar(64) UNIQUE,
+                    offers varchar(512) UNIQUE,
+                    PRIMARY KEY (id)
+                    );";
+            mysql_ask('update',$force);
+            mysql_ask('update',$query);
+    }
+}
+
+function inputOffer(){
+    $query = "SELECT * FROM offer";
+    $result = mysql_ask('fetchrow',$query);
+    $count = 0;
+    foreach($result as $offer){
+        $count++;
+        if($count == 3){
+            echo '<div class="row">';
+            $count=0;}
+        else echo '<div>';
+        echo '
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <form method="POST">
+                        <div class="col-sm-10"><h3 class="panel-title">'.$offer[1].'</h3></div>
+                        <div class="text-right"><button type="button submit" class="btn btn-danger btn-xs" name="removeoffer" value="'.$offer[1].'">Fjern</div>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Produkter</th>
+                                        <th>Antall</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                $makeoffer = explode("|",$offer[2]);
+                                foreach (explode("-",$makeoffer[0]) as $product){
+                                    echo '<tr>';
+                                    foreach (explode(">",$product) as $name)
+                                        echo '<td>'.$name.'</td>';
+                                    echo '</tr>';
+                                }
+                                
+                         echo '</tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-7">
+                            <form method="POST"><button type="button submit" class="btn btn-success btn-lg" name="buyoffer" value="'.$offer[1].'">Kjøp</form>
+                        </div>
+                        <div class="col-lg-5 text-right form-group input-group has-success">
+                            <span class="input-group-addon">kr</span>
+                            <input class="form-control" type="text" value="'.$makeoffer[1].'" readonly>
+                            <span class="input-group-addon">.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        ';
+    }
+}
+
+function removeOffer($name){
+    $query = "DELETE FROM offer WHERE name = '".$name."'";
+    mysql_ask('update',$query);
+}
+
+function buyOffer($name){
+    $DELETE = TRUE;
+    $query = "SELECT * FROM offer WHERE name = '".$name."'";
+    $result = mysql_ask('fetcharray',$query);
+    $makeoffer = explode("|",$result[2]);
+    foreach (explode("-",$makeoffer[0]) as $product){
+        $product = explode(">",$product);
+        $check = "SELECT quantity FROM product WHERE productname = '".$product[0]."'";
+        $quantity = mysql_ask('fetcharray',$check);
+        if (isset($product[1]))
+            $calculate = $quantity[0]-$product[1];
+        if (isset($calculate)){
+            if ($calculate < 0)
+                $DELETE = FALSE;
+            if ($DELETE){
+                $query = "UPDATE product SET quantity = ".$calculate." WHERE productname = '".$product[0]."'";
+                mysql_ask('update',$query);
+            }
+        }
+    }
+    if ($DELETE and isset($calculate))
+        removeOffer($name);
 }
 ?>

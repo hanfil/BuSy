@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">BuSy Prosjekt</a>
+                <a class="navbar-brand" href="index.php">BuSy Prosjekt</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -82,7 +82,7 @@
                         <a href="produktmodul.php"><i class="fa fa-fw fa-tasks"></i> Produktmodul</a>
                     </li>
                     <li>
-                        <a href="ordremodul.php"><i class="fa fa-fw fa-shopping-cart"></i> Ordremodul</a>
+                        <a href="tilbud.php"><i class="fa fa-fw fa-shopping-cart"></i> Tilbud</a>
                     </li>
                     <li>
                         <a href="#"><i class=" fa fa-money"></i> Faktura</a>

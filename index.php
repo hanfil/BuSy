@@ -80,12 +80,12 @@
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
-                                        <div>Ordre</div>
+                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM offer');?></div>
+                                        <div>Tilbud</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="ordremodul.php">
+                            <a href="tilbud.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
