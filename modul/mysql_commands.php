@@ -224,7 +224,7 @@ function addProduct($productname,$innprice,$outprice,$quantity,$category,$suppli
     if ($result != "New record updated successfully."){
         $force = "CREATE TABLE product (
                 id int NOT NULL AUTO_INCREMENT,
-                productname varchar(255),
+                productname varchar(255) UNIQUE,
                 innprice int(64),
                 outprice int(64),
                 quantity int(64),
@@ -264,8 +264,7 @@ function inputProduct($keyword){
                 echo "<td class='active'>$row[$i]</td>";
         }
         echo "<td><button type='button' class='btn btn-info' data-toggle='modal' href='#editproduct$row[0]'>$row[0]</button></td>";
-        echo "<td><input class='form-control' type='checkbox' name='lagtilbud$row[0]' value='$row[0]'></td>";
-        //inputProductModal($row[0]);
+        echo "<td><input class='form-control' type='checkbox' name='lagtilbud$row[0]'></td>";
         echo "</tr>";
     }
     echo "</form>";
@@ -321,34 +320,91 @@ function inputProductModal($id){
     </div>
     ';
 }
-function lagtilbudclass(){
-    if (isset($_GET['tilbud']))
+function makeoffer_class(){
+    if (isset($_POST['tilbud']) or isset($_POST['updateoffer']))
         echo "col-lg-9";
 }
 
-function lagtilbud(){
-    if (isset($_GET['tilbud'])){
+function makeoffer_db(){
+    $product = "SELECT * FROM product";
+    $productcheck = mysql_ask('fetchrow',$product);
+    foreach($productcheck as $namecheck){
+        $lagtilbud="";
+        $lagtilbud="lagtilbud".$namecheck[0];
+        if (isset($_POST[$lagtilbud])){
+            $query = "INSERT INTO makeoffer (productname, quantity, price)
+                        VALUES ('$namecheck[1]','1', $namecheck[3]);";
+            $result = mysql_ask('update',$query);
+            if ($result != "New record updated successfully."){
+                $force = "CREATE TABLE makeoffer (
+                        id int NOT NULL AUTO_INCREMENT,
+                        productname varchar(255) UNIQUE,
+                        quantity int(64),
+                        price int(64),
+                        PRIMARY KEY (id)
+                        );";
+                mysql_ask('update',$force);
+                mysql_ask('update',$query);
+            }
+        }
+    }
+}
+
+function makeoffer_clear(){
+    $query = "TRUNCATE TABLE makeoffer"; 
+    mysql_ask('update',$query);
+}
+
+function makeoffer_update(){
+    $query = "SELECT * FROM makeoffer";
+    $result = mysql_ask('fetchrow',$query);
+    foreach($result as $row){
+        $namecheck = "quantity".$row[2];
+        if ($row[2] != $_POST[$namecheck]){
+            
+        }
+    }
+}
+
+function makeoffer(){
+    $query = "SELECT * FROM makeoffer";
+    $result = mysql_ask('fetchrow',$query);
+    $sum = 0;
     echo '
                     <div class="col-lg-3">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Produktnavn</th>
-                                        <th>Innkjøpspris</th>
-                                        <th>Utsalgspris</th>
-                                        <th>Antall</th>
-                                        <th>Kategori</th>                                        
-                                        <th>Leverandør</th>
-                                        <th>Produktnummer</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
+                        <form method="POST">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Produkter</th>
+                                            <th>Antall</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+                                    foreach($result as $row){
+                                        echo "<tr>";
+                                        echo "<td><input class='form-control' type='text' value='$row[1]' readonly></td>";
+                                        echo "<td><input class='form-control' type='number' value='$row[2]' min='1' name='quantity$row[0]'></td>";
+                                        echo "</tr>";
+                                        $sum += $row[3];
+                                        } 
+    echo '
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 text-center"><h5>Tilbuds Pris</h5></div>
+                                <div class="col-lg-7"><input class="form-control" type="number" name="offerprice" min="0" value="'.$sum.'"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 text-center"><h5>Slutt Dato</h5></div>
+                                <div class="col-lg-7"><input class="form-control" type="date" name="endDate" min="'.date("Y-m-d").'"></div>
+                            </div>
+                            <div class="col-lg-4"><button type="button" class="btn btn-warning">Levér Tilbud</div>
+                            <div class="col-lg-4"><button type="button submit" class="btn btn-success" name="updateoffer">Oppdater</div>
+                            <div class="col-lg-4"><button type="button submit" class="btn btn-danger" name="clearoffer">Slett Alt</div>
+                        </form>
                     </div>';
-    }
 }
 ?>

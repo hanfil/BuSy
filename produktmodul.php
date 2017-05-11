@@ -38,12 +38,13 @@
                         </div>
                     </form>
                     <button type="button" class="btn btn-primary col-lg-3" data-toggle="modal" href="#leggtilprodukt">Legg til produkt.</button>
-                    <form method='GET'><button type="button submit" name="tilbud" class="btn btn-info col-lg-1">Lag Tilbud</button>
+                    <!-- Don't add a form end tag for this. The form end tag is in function: inputProduct() -->
+                    <form method='POST'><button type="button submit" name="tilbud" class="btn btn-info col-lg-1">Lag Tilbud</button>
                 </div>
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="<?php lagtilbudclass(); ?>">
+                    <div class="<?php makeoffer_class(); ?>">
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
@@ -63,9 +64,9 @@
                             </table>
                         </div>
                     </div>
-
-                    <?php lagtilbud(); ?>
-
+                    <?php makeoffer_db(); 
+                    if (isset($_POST['tilbud']) or isset($_POST['updateoffer']))
+                        makeoffer();?>
                 </div>
                 <!-- /.row -->
 
@@ -135,6 +136,8 @@
         updateProduct($_POST['oppdater'],$_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
     elseif(isset($_POST['productname']))
         addProduct($_POST['productname'],$_POST['innprice'],$_POST['outprice'],$_POST['quantity'],$_POST['category'],$_POST['supplier'],$_POST['productnumber']);
+    if(isset($_POST["clearoffer"])) 
+        makeoffer_clear();
     ?>
 
 </body>
