@@ -120,13 +120,19 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
+                                    <div class="panel panel-red">
+                                        <a href="#" class="list-group-item">
+                                            <span class="badge">1 hour ago</span>
+                                            <i class="fa fa-fw fa-user"></i> Ordre #4 <strong>ikke på lager!</strong>
+                                        </a>
+                                    </div>
                                     <a href="#" class="list-group-item">
                                         <span class="badge">just now</span>
                                         <i class="fa fa-fw fa-calendar"></i> Calendar updated
@@ -142,10 +148,6 @@
                                     <a href="#" class="list-group-item">
                                         <span class="badge">46 minutes ago</span>
                                         <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has been added
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <span class="badge">2 hours ago</span>
@@ -166,7 +168,53 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Ordre Panel</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">just now</span>
+                                        <i class="fa fa-fw fa-user"></i> Ordre #8 <strong>oprettet!</strong>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">4 minutes ago</span>
+                                        <i class="fa fa-fw fa-user"></i> Ordre #7 <strong>oprettet!</strong>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">23 minutes ago</span>
+                                        <i class="fa fa-fw fa-user"></i> Ordre #6 <strong>oprettet!</strong>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">46 minutes ago</span>
+                                        <i class="fa fa-fw fa-user"></i> Ordre #5 <strong>oprettet!</strong>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">1 hour ago</span>
+                                        <i class="fa fa-fw fa-user"></i> Ordre #4 <strong>oprettet!</strong>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">2 hours ago</span>
+                                        <i class="fa fa-fw fa-check"></i> Ordre #3 sendt!
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">yesterday</span>
+                                        <i class="fa fa-fw fa-check"></i> Ordre #2 sendt!
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">two days ago</span>
+                                        <i class="fa fa-fw fa-check"></i> Ordre #1 sendt!
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>

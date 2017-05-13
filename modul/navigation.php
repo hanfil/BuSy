@@ -85,6 +85,9 @@
                         <a href="tilbud.php"><i class="fa fa-fw fa-shopping-cart"></i> Tilbud</a>
                     </li>
                     <li>
+                        <a href="ordre.php"><i class="fa fa-fw fa-truck"></i> Ordre</a>
+                    </li>
+                    <li>
                         <a href="#"><i class=" fa fa-money"></i> Faktura</a>
                     </li>
                     <li>
@@ -99,16 +102,21 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#hjelpemidler"><i class="fa fa-fw fa-arrows-v"></i> Hjelpemidler <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="hjelpemidler" class="collapse">
+                            <li>
+                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                            </li>
+                            <li>
+                                <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                            </li>
+                            <li>
+                                <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                            </li>
+                            <li>
+                                <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
