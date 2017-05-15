@@ -49,11 +49,11 @@ function mysql_ask($task, $query){
 }
 
 function addPrivatperson($firstname,$lastname,$email,$tlf,$adress,$business){
-    $query = "INSERT INTO privatperson (firstname, lastname, email, tlf, adress, business)
+    $query = "INSERT INTO busy_privatperson (firstname, lastname, email, tlf, adress, business)
                 VALUES ('$firstname','$lastname','$email','$tlf','$adress','$business');";
     $result = mysql_ask('update',$query);
     if ($result != "New record updated successfully."){
-        $force = "CREATE TABLE privatperson (
+        $force = "CREATE TABLE busy_privatperson (
                 id int NOT NULL AUTO_INCREMENT,
                 firstname varchar(255),
                 lastname varchar(255),
@@ -69,13 +69,13 @@ function addPrivatperson($firstname,$lastname,$email,$tlf,$adress,$business){
 }
 
 function updatePrivatperson($id,$firstname,$lastname,$email,$tlf,$adress,$business){
-    $query = "UPDATE privatperson SET firstname = '$firstname', lastname = '$lastname', email = '$email', tlf = '$tlf', adress = '$adress', business = '$business'
+    $query = "UPDATE busy_privatperson SET firstname = '$firstname', lastname = '$lastname', email = '$email', tlf = '$tlf', adress = '$adress', business = '$business'
                 WHERE id = $id";
     $reuslt = mysql_ask('update',$query);
 }
 
 function inputPrivatperson($keyword){
-    $query = "SELECT * FROM privatperson";
+    $query = "SELECT * FROM busy_privatperson";
     if ($keyword != '')
         $query .= " WHERE firstname LIKE '%$keyword%' OR lastname LIKE '%$keyword%' OR tlf LIKE '$keyword' OR business LIKE '%$keyword%'";
 
@@ -91,7 +91,7 @@ function inputPrivatperson($keyword){
 }
 
 function inputPrivatpersonModal($id){
-    $query = "SELECT * FROM privatperson WHERE id = $id";
+    $query = "SELECT * FROM busy_privatperson WHERE id = $id";
     $privat = mysql_ask('fetcharray',$query);
     echo '
     <div class="modal fade" id="editprivat'.$id.'" tabindex="-1" role="dialog" aria-hidden="true">
@@ -141,11 +141,11 @@ function inputPrivatpersonModal($id){
 }
 
 function addBusiness($name,$email,$tlf,$adress){
-    $query = "INSERT INTO business (name, email, tlf, adress)
+    $query = "INSERT INTO busy_business (name, email, tlf, adress)
                 VALUES ('$name','$email','$tlf','$adress');";
     $result = mysql_ask('update',$query);
     if ($result != "New record updated successfully."){
-        $force = "CREATE TABLE business (
+        $force = "CREATE TABLE busy_business (
                 id int NOT NULL AUTO_INCREMENT,
                 name varchar(255),
                 email varchar(255),
@@ -159,13 +159,13 @@ function addBusiness($name,$email,$tlf,$adress){
 }
 
 function updateBusiness($id,$name,$email,$tlf,$adress){
-    $query = "UPDATE business SET name = '$name', email = '$email', tlf = '$tlf', adress = '$adress'
+    $query = "UPDATE busy_business SET name = '$name', email = '$email', tlf = '$tlf', adress = '$adress'
                 WHERE id = $id";
     $reuslt = mysql_ask('update',$query);
 }
 
 function inputBusiness($keyword){
-    $query = "SELECT * FROM business";
+    $query = "SELECT * FROM busy_business";
     if ($keyword != '')
         $query .= " WHERE name LIKE '%$keyword%' OR tlf LIKE '$keyword'";
 
@@ -181,7 +181,7 @@ function inputBusiness($keyword){
 }
 
 function inputBusinessModal($id){
-    $query = "SELECT * FROM business WHERE id = $id";
+    $query = "SELECT * FROM busy_business WHERE id = $id";
     $business = mysql_ask('fetcharray',$query);
     echo '
     <div class="modal fade" id="editbedrift'.$id.'" tabindex="-1" role="dialog" aria-hidden="true">
@@ -218,11 +218,11 @@ function inputBusinessModal($id){
 }
 
 function addProduct($productname,$innprice,$outprice,$quantity,$category,$supplier,$productnumber){
-    $query = "INSERT INTO product (productname, innprice, outprice, quantity, category, supplier, productnumber)
+    $query = "INSERT INTO busy_product (productname, innprice, outprice, quantity, category, supplier, productnumber)
                 VALUES ('$productname','$innprice','$outprice','$quantity','$category','$supplier','$productnumber');";
     $result = mysql_ask('update',$query);
     if ($result != "New record updated successfully."){
-        $force = "CREATE TABLE product (
+        $force = "CREATE TABLE busy_product (
                 id int NOT NULL AUTO_INCREMENT,
                 productname varchar(255) UNIQUE,
                 innprice int(64),
@@ -239,14 +239,14 @@ function addProduct($productname,$innprice,$outprice,$quantity,$category,$suppli
 }
 
 function updateProduct($id,$productname,$innprice,$outprice,$quantity,$category,$supplier,$productnumber){
-    $query = "UPDATE product SET productname = '$productname', innprice = '$innprice', outprice = '$outprice', quantity = '$quantity', 
+    $query = "UPDATE busy_product SET productname = '$productname', innprice = '$innprice', outprice = '$outprice', quantity = '$quantity', 
                                     category = '$category', supplier = '$supplier', productnumber ='$productnumber'
                 WHERE id = $id";
     $reuslt = mysql_ask('update',$query);
 }
 
 function inputProduct($keyword){
-    $query = "SELECT * FROM product";
+    $query = "SELECT * FROM busy_product";
     if ($keyword != '')
         $query .= " WHERE productname LIKE '%$keyword%' OR category LIKE '%$keyword%' OR supplier LIKE '%$keyword%'";
 
@@ -273,7 +273,7 @@ function inputProduct($keyword){
 }
 
 function inputProductModal($id){
-    $query = "SELECT * FROM product WHERE id = $id";
+    $query = "SELECT * FROM busy_product WHERE id = $id";
     $product = mysql_ask('fetcharray',$query);
     echo '
     <div class="modal fade" id="editproduct'.$id.'" tabindex="-1" role="dialog" aria-hidden="true">
@@ -300,7 +300,7 @@ function inputProductModal($id){
                                         <div class="form-group">
                                             <input list="business" class="form-control" value="'.$product[6].'" type="text" name="supplier">
                                             <datalist id="business">';
-                                                $querysupplier="SELECT name FROM business";
+                                                $querysupplier="SELECT name FROM busy_business";
                                                 $resultsupplier = (mysql_ask('fetchrow',$querysupplier));
                                                 foreach($resultsupplier as $names){
                                                     foreach($names as $name)
@@ -327,17 +327,17 @@ function makeoffer_class(){
 }
 
 function makeoffer_db(){
-    $product = "SELECT * FROM product";
+    $product = "SELECT * FROM busy_product";
     $productcheck = mysql_ask('fetchrow',$product);
     foreach($productcheck as $namecheck){
         $lagtilbud="";
         $lagtilbud="lagtilbud".$namecheck[0];
         if (isset($_POST[$lagtilbud])){
-            $query = "INSERT INTO makeoffer (productname, quantity, price)
+            $query = "INSERT INTO busy_makeoffer (productname, quantity, price)
                         VALUES ('$namecheck[1]','1', $namecheck[3]);";
             $result = mysql_ask('update',$query);
             if ($result != "New record updated successfully."){
-                $force = "CREATE TABLE makeoffer (
+                $force = "CREATE TABLE busy_makeoffer (
                         id int NOT NULL AUTO_INCREMENT,
                         productname varchar(255) UNIQUE,
                         quantity int(64),
@@ -352,17 +352,17 @@ function makeoffer_db(){
 }
 
 function makeoffer_clear(){
-    $query = "TRUNCATE TABLE makeoffer"; 
+    $query = "TRUNCATE TABLE busy_makeoffer"; 
     mysql_ask('update',$query);
 }
 
 function makeoffer_update(){
-    $query = "SELECT * FROM makeoffer";
+    $query = "SELECT * FROM busy_makeoffer";
     $result = mysql_ask('fetchrow',$query);
     foreach($result as $row){
         $namecheck = "quantity".$row[0];
         if ($row[2] != $_POST[$namecheck]){
-            $query = "UPDATE makeoffer SET quantity = '$_POST[$namecheck]' WHERE id = $row[0]";
+            $query = "UPDATE busy_makeoffer SET quantity = '$_POST[$namecheck]' WHERE id = $row[0]";
             mysql_ask('update',$query);
         }
     }
@@ -375,7 +375,7 @@ function makeoffer_make(){
 }
 
 function makeoffer(){
-    $query = "SELECT * FROM makeoffer";
+    $query = "SELECT * FROM busy_makeoffer";
     $result = mysql_ask('fetchrow',$query);
     $sum = 0;
     echo '
@@ -392,7 +392,7 @@ function makeoffer(){
                                     </thead>
                                     <tbody>';
                                     foreach($result as $row){
-                                        $query = "SELECT quantity FROM product WHERE productname = '$row[1]'";
+                                        $query = "SELECT quantity FROM busy_product WHERE productname = '$row[1]'";
                                         $max = mysql_ask('fetcharray',$query);
                                         echo "<tr>";
                                         echo "<td><input class='form-control' type='text' value='$row[1]' readonly></td>";
@@ -420,16 +420,16 @@ function makeoffer(){
 }
 
 function offercreate($offerprice,$enddate){
-    $querymakeoffer = "SELECT productname, quantity FROM makeoffer";
+    $querymakeoffer = "SELECT productname, quantity FROM busy_makeoffer";
     $resultmakeoffer = mysql_ask('fetchrow',$querymakeoffer);
     $valueinsert="";
     foreach($resultmakeoffer as $makeoffer)
         $valueinsert .= "-$makeoffer[0]>$makeoffer[1]";
     $valueinsert .= "|$offerprice|$enddate";
-    $query = "INSERT INTO offer (name,offers) VALUES ('".$_POST['offername']."','$valueinsert')";
+    $query = "INSERT INTO busy_offer (name,offers) VALUES ('".$_POST['offername']."','$valueinsert')";
     $result = mysql_ask('update',$query);
     if ($result != "New record updated successfully."){
-            $force = "CREATE TABLE offer (
+            $force = "CREATE TABLE busy_offer (
                     id int NOT NULL AUTO_INCREMENT,
                     name varchar(64) UNIQUE,
                     offers varchar(512) UNIQUE,
@@ -441,7 +441,7 @@ function offercreate($offerprice,$enddate){
 }
 
 function inputOffer(){
-    $query = "SELECT * FROM offer";
+    $query = "SELECT * FROM busy_offer";
     $result = mysql_ask('fetchrow',$query);
     $count = 0;
     foreach($result as $offer){
@@ -497,18 +497,18 @@ function inputOffer(){
 }
 
 function removeOffer($name){
-    $query = "DELETE FROM offer WHERE name = '".$name."'";
+    $query = "DELETE FROM busy_offer WHERE name = '".$name."'";
     mysql_ask('update',$query);
 }
 
 function buyOffer($name){
     $DELETE = TRUE;
-    $query = "SELECT * FROM offer WHERE name = '".$name."'";
+    $query = "SELECT * FROM busy_offer WHERE name = '".$name."'";
     $result = mysql_ask('fetcharray',$query);
     $makeoffer = explode("|",$result[2]);
     foreach (explode("-",$makeoffer[0]) as $product){
         $product = explode(">",$product);
-        $check = "SELECT quantity FROM product WHERE productname = '".$product[0]."'";
+        $check = "SELECT quantity FROM busy_product WHERE productname = '".$product[0]."'";
         $quantity = mysql_ask('fetcharray',$check);
         if (isset($product[1]))
             $calculate = $quantity[0]-$product[1];
@@ -516,7 +516,7 @@ function buyOffer($name){
             if ($calculate < 0)
                 $DELETE = FALSE;
             if ($DELETE){
-                $query = "UPDATE product SET quantity = ".$calculate." WHERE productname = '".$product[0]."'";
+                $query = "UPDATE busy_product SET quantity = ".$calculate." WHERE productname = '".$product[0]."'";
                 mysql_ask('update',$query);
             }
         }
