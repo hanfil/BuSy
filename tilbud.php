@@ -15,8 +15,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Ordremodul
-                            <small>Oversikt over ordrer</small>
+                            Tilbud
+                            <small>Oversikt over tilbuder</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -50,10 +50,14 @@
     <script src="js/bootstrap.min.js"></script>
 
     <?php 
-    if (isset($_POST['buyoffer']))
+    if (isset($_POST['buyoffer'])){
         buyOffer($_POST['buyoffer']);
-    elseif (isset($_POST['removeoffer']))
+        echo "<script> location.assign('tilbud.php'); </script>";
+        }
+    elseif (isset($_POST['removeoffer'])){
         removeOffer($_POST['removeoffer']);
+        echo "<script> location.assign('tilbud.php'); </script>";
+    }
     ?>
 
 </body>

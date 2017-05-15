@@ -110,7 +110,7 @@
                                         <div class="form-group">
                                             <input list="supplier" class="form-control" placeholder="Leverandør" type="text" name="supplier">
                                             <datalist id="supplier"><?php
-                                                $querybusiness="SELECT name FROM business";
+                                                $querybusiness="SELECT name FROM busy_business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
                                                 foreach($resultbusiness as $names){
                                                     foreach($names as $name)

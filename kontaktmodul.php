@@ -158,7 +158,7 @@
                                         <div class="form-group">
                                             <input list="business" class="form-control" placeholder="Firma" type="text" name="business">
                                             <datalist id="business"><?php
-                                                $querybusiness="SELECT name FROM business";
+                                                $querybusiness="SELECT name FROM busy_business";
                                                 $resultbusiness = (mysql_ask('fetchrow',$querybusiness));
                                                 foreach($resultbusiness as $names){
                                                     foreach($names as $name)
@@ -179,14 +179,22 @@
 
     <!--Input into DB-->
     <?php 
-    if(isset($_POST['name']) and isset($_POST['businessid']))
+    if(isset($_POST['name']) and isset($_POST['businessid'])){
         updateBusiness($_POST['businessid'],$_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
-    elseif(isset($_POST['firstname']) and isset($_POST['privatid']))
+        echo "<script> location.assign('kontaktmodul.php'); </script>";
+    }
+    elseif(isset($_POST['firstname']) and isset($_POST['privatid'])){
         updatePrivatperson($_POST['privatid'],$_POST['firstname'],$_POST['lastname'],$_POST['privatemail'],$_POST['privattlf'],$_POST['privatadress'],$_POST['business']);
-    elseif(isset($_POST['name']))
+        echo "<script> location.assign('kontaktmodul.php'); </script>";
+    }
+    elseif(isset($_POST['name'])){
         addBusiness($_POST['name'],$_POST['businessemail'],$_POST['businesstlf'],$_POST['businessadress']);
-    elseif(isset($_POST['firstname']))
+        echo "<script> location.assign('kontaktmodul.php'); </script>";
+    }
+    elseif(isset($_POST['firstname'])){
         addPrivatperson($_POST['firstname'],$_POST['lastname'],$_POST['privatemail'],$_POST['privattlf'],$_POST['privatadress'],$_POST['business']);
+        echo "<script> location.assign('kontaktmodul.php'); </script>";
+    }
     ?>
 
 </body>

@@ -21,6 +21,10 @@
                             <li class="active">
                                 <i class="fa fa-dashboard"></i> Dashboard
                             </li>
+                            <li>
+                            <form method="POST"><button type="button submit" class="btn btn-xs btn-primary" name="initialize">Initialiser</button></form>
+                            <?php if(isset($_POST['initialize'])) createPrivatpersonDB();createBusinessDB();createProductDB();createOfferDB(); ?>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -36,7 +40,7 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM business, privatperson');?></div>
+                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM busy_business, busy_privatperson');?></div>
                                         <div>Kontakter</div>
                                     </div>
                                 </div>
@@ -58,7 +62,7 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM product');?></div>
+                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM busy_product');?></div>
                                         <div>Produkter</div>
                                     </div>
                                 </div>
@@ -80,7 +84,7 @@
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM offer');?></div>
+                                        <div class="huge"><?php echo mysql_ask('resultnumber','SELECT * FROM busy_offer');?></div>
                                         <div>Tilbud</div>
                                     </div>
                                 </div>

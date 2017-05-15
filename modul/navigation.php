@@ -105,16 +105,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#hjelpemidler"><i class="fa fa-fw fa-arrows-v"></i> Hjelpemidler <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="hjelpemidler" class="collapse">
                             <li>
-                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                                <a href="extrahelp/charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                                <a href="extrahelp/tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                             </li>
                             <li>
-                                <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                                <a href="extrahelp/forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
                             </li>
                             <li>
-                                <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                                <a href="extrahelp/bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
                             </li>
                         </ul>
                     </li>
